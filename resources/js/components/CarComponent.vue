@@ -2,7 +2,42 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-4">
-            <manufacturer-component></manufacturer-component>
+            <div id="accordion">
+
+                <div class="card">
+                    <div class="card-header">
+                        <a class="card-link" data-toggle="collapse" href="#manufacturer">Manufacturer</a>
+                    </div>
+                    <div id="manufacturer" class="collapse show" data-parent="#accordion">
+                        <div class="card-body">
+                            <type-component></type-component>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <a class="collapsed card-link" data-toggle="collapse" href="#type">Type</a>
+                    </div>
+                    <div id="type" class="collapse" data-parent="#accordion">
+                        <div class="card-body">
+                            <type-component></type-component>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                    <a class="collapsed card-link" data-toggle="collapse" href="#color">Color</a>
+                    </div>
+                    <div id="color" class="collapse" data-parent="#accordion">
+                        <div class="card-body">
+                            <color-component></color-component>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
         </div>
         <div class="col-md-8">
             <div class="card">
@@ -36,7 +71,7 @@
                             <div class="col-md-6">
                                 <!-- <input id="name" type="text" class="form-control" v-model="form.manufacturer"> -->
                                 <select class="form-control" v-model="form.manufacturer">
-                                    <option value=""></option>
+                                    <option value="">[Select]</option>
                                     <option v-for="manuf in manufData" :key="manuf.id" :value="manuf.id">{{manuf.manufacturer}}</option>
                                 </select>
                             </div>

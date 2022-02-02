@@ -14,7 +14,7 @@
             <div class="input-group mt-3">
                 <input type="text" class="form-control" placeholder="Add" v-model="form.manufacturer" ref="manuf">
                 <div class="input-group-append">
-                    <button class="btn btn-success" type="submit" @click="addItem()">Submit</button>
+                    <button class="btn btn-success fa fa-arrow-right" type="submit" @click="addItem()"></button>
                 </div>
             </div>
         </div>
