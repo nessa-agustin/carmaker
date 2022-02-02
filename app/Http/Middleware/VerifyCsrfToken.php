@@ -14,6 +14,8 @@ class VerifyCsrfToken extends Middleware
     protected $except = [
         //
         '/carmaker',
-        'manufacturer'
+        'manufacturer',
+        'color',
+        'type'
     ];
 }

@@ -22,6 +22,8 @@ window.Vue = require('vue').default;
 Vue.component('example-component', require('./components/ExampleComponent.vue').default);
 Vue.component('car-component', require('./components/CarComponent.vue').default);
 Vue.component('manufacturer-component', require('./components/ManufacturerComponent.vue').default);
+Vue.component('color-component', require('./components/ColorComponent.vue').default);
+Vue.component('type-component', require('./components/TypeComponent.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

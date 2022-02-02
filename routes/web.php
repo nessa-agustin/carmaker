@@ -41,3 +41,21 @@ Route::controller(ManufacturerController::class)->group(function(){
 
 
 });
+
+Route::controller(TypeController::class)->group(function(){
+
+    Route::get('/type/list','index');
+    Route::post('/type','store');
+    Route::delete('/type/{id}','destroy');
+
+
+});
+
+Route::controller(ColorController::class)->group(function(){
+
+    Route::get('/color/list','index');
+    Route::post('/color','store');
+    Route::delete('/color/{id}','destroy');
+
+
+});
