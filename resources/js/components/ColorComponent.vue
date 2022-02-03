@@ -1,22 +1,30 @@
 <template>
 
-    <div class="container">
-        <div>
-            <div class="d-flex" v-for="color in colors" :key="color.id">
-                <div class="flex-grow-1">{{color.color}}</div>
-                <div class="">
-                    <button class="btn btn-sm fa fa-trash text-danger" @click="delItem($event)" :value="color.id"></button>
+    <div class="container mt-1">
+        <div class="card">
+            <div class="card-header">
+                Colors
+            </div>
+            <div class="card-body">
+                <div>
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Add" v-model="form.color" ref="color">
+                        <div class="input-group-append">
+                            <button class="btn btn-success" type="submit" @click="addItem()"><i class="fa fa-arrow-right"></i></button>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <div class="d-flex" v-for="color in colors" :key="color.id">
+                        <div class="flex-grow-1">{{color.color}}</div>
+                        <div class="">
+                            <button class="btn btn-sm fa fa-trash text-danger" @click="delItem($event)" :value="color.id"></button>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-        <div>
-            <div class="input-group mt-3">
-                <input type="text" class="form-control" placeholder="Add" v-model="form.color" ref="color">
-                <div class="input-group-append">
-                    <button class="btn btn-success" type="submit" @click="addItem()">Submit</button>
-                </div>
-            </div>
-        </div>
+        
     </div>
 </template>
 
@@ -40,8 +48,29 @@
 
                 axios.get('color/list')
                     .then((response) => {
-                        this.types = response.data;
-                        this.eventHub.$emit('getColors',this.colors);
+                        this.colors = response.data;
+                        this.eventHub.$emit('getColorsList',this.colors);
+
+                    })
+            },
+              delItem(event){
+
+                let val = event.target.value;
+                axios.delete('color/'+val)
+                    .then((response) => {
+                        this.getColors();
+                    })
+
+            },
+
+            addItem(){
+                axios.post('color',this.form)
+                    .then((response) => {
+                        this.getColors(); 
+
+
+                        this.form.color = '';
+
 
                     })
             }

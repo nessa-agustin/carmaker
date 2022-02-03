@@ -16,7 +16,7 @@ class ColorController extends Controller
 
     public function store(Request $request){
 
-        $color = new Manufacturer;
+        $color = new Color;
 
         $color->color = $request->color;
         $color->save();
