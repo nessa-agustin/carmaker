@@ -29,7 +29,7 @@
                             <label for="name" class="col-md-4 col-form-label text-md-end">Car Name</label>
 
                             <div class="col-md-6">
-                                <input id="name" type="text" class="form-control" v-model="form.name">
+                                <input id="name" type="text" class="form-control" v-model="form.car_name">
                             </div>
                         </div>
                          <div class="row mb-3">
@@ -101,11 +101,12 @@
                 typeData: [],
                 colorData: [],
                 form: {
-                    name: '',
+                    car_name: '',
                     manufacturer: '',
                     type: '',
                     color: ''
                 },
+                errors: null
             }
         },
         methods: {
@@ -115,11 +116,14 @@
                 
                 axios.post('carmaker',this.form)
                     .then((response) => {
-                        // this.getCars();
                         this.$refs.carForm.reset();
                     })
+                     .catch(e => {
+                        // this.errors = e.data;
+                        console.log(e)
+                    })
 
-
+                    // this.getCars(); //REMOVED : keeps undoing the form reset
 
             },
 
@@ -144,7 +148,7 @@
 
                         let car = response.data.car;
 
-                        this.form.name = car.car_name;
+                        this.form.car_name = car.car_name;
                         this.form.manufacturer = car.manufacturer;
                         this.form.type = car.type;
                         this.form.color = car.color;

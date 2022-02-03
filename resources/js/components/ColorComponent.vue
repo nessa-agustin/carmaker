@@ -64,7 +64,11 @@
             },
 
             addItem(){
-                axios.post('color',this.form)
+
+                if(this.form.color == ''){
+                    alert('Field required');
+                }else{
+                    axios.post('color',this.form)
                     .then((response) => {
                         this.getColors(); 
 
@@ -73,6 +77,9 @@
 
 
                     })
+                }
+
+                
             }
 
 

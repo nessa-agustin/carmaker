@@ -64,7 +64,11 @@
             },
 
             addItem(){
-                axios.post('type',this.form)
+
+                if(this.form.type == ''){
+                    alert('Field required');
+                }else{
+                    axios.post('type',this.form)
                     .then((response) => {
                         this.getTypes(); 
 
@@ -72,7 +76,10 @@
                         this.form.type = '';
 
 
-                    })
+                    }) 
+                }
+
+               
             }
 
 

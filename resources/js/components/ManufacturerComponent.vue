@@ -66,7 +66,11 @@
             },
 
             addItem(){
-                axios.post('manufacturer',this.form)
+
+                if(this.form.manufacturer == ''){
+                    alert("field required");
+                }else{
+                     axios.post('manufacturer',this.form)
                     .then((response) => {
                         this.getManufacturers(); //setup watch something
 
@@ -76,6 +80,9 @@
 
 
                     })
+                }
+
+               
             }
             
             
