@@ -1,0 +1,8 @@
+version: '3.4'
+
+services:
+  carmaker:
+    image: carmaker
+    build:
+      context: .
+      dockerfile: ./Dockerfile
