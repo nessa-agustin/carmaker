@@ -42,19 +42,34 @@ class CarController extends Controller
     {
         //
 
-        $car = new Car;
+        // $validation = $request->validate([
+        //     'car_name' => 'required',
+        //     'manufacturer' => 'required',
+        //     'type' => 'required',
+        //     'color' => 'required',
+        // ]);
 
-        $car->car_name = $request->name;
-        $car->manufacturer = $request->manufacturer;
-        $car->type = $request->type;
-        $car->color = $request->color;
+        // if($validation->fails){
+        //     return response()->json([
+        //         "error" => $validation->errors()->messages()
+        //     ]); 
+        // } 
 
-        $car->save();
+        // REMOVED: not returning error
+        
+            $car = new Car;
 
-        return response()->json([
-            "car" => $car
-        ]);
+            $car->car_name = $request->car_name;
+            $car->manufacturer = $request->manufacturer;
+            $car->type = $request->type;
+            $car->color = $request->color;
 
+            $car->save();
+
+            return response()->json([
+                "car" => $car
+            ]);
+        
     }
 
     /**
@@ -71,44 +86,6 @@ class CarController extends Controller
         return response()->json([
             "car" => $car
         ]);
-
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-
-        Car::destroy($id);
-
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
 
     }
 }
